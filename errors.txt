@@ -1,0 +1,3 @@
+Error 001: core\classes\login_obj.php line 58:
+something went wrong during registration.
+

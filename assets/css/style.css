@@ -1,0 +1,36 @@
+body{
+    max-width: 960px;
+    width: 70%;
+    margin: auto;
+}
+.title{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.tab-pane {
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+}
+.enquete{
+    background-color: #000000;
+    color:#ffffff;
+    margin: 2px;
+    padding: 5px;
+}
+.enquete a{
+    text-decoration: none;
+    color: inherit;
+}
+.block {
+    display: block;
+}
+.col-md-3 .enquete {
+    width: calc(100% - 14px);
+    float: left;
+}
+.inline-right {
+    float: right;
+}
