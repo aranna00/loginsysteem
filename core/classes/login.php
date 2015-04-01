@@ -148,4 +148,9 @@ class Login {
 	public function loggedIn(){
 		return(isset($_SESSION["user"])) ? true:false;
 	}
+
+	public function logOut(){
+		session_destroy();
+	}
+
 }
