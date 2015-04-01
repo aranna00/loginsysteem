@@ -9,7 +9,7 @@
 namespace core\classes;
 
 
-class general {
+class General {
 	/**
 	 * @param \FluentPDO $db
 	 * @param string     $basePath

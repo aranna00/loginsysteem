@@ -11,7 +11,7 @@ namespace core\classes;
 
 use core\classes\user;
 
-class login {
+class Login {
 	/**
 	 * @param \FluentPDO $db
 	 * @param string     $basePath

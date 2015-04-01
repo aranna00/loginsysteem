@@ -9,7 +9,7 @@
 namespace core\classes;
 
 
-class user {
+class User {
 	protected $db;
 	protected $basePath;
 
