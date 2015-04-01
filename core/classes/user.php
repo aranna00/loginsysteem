@@ -12,6 +12,10 @@ namespace core\classes;
 class user {
 	protected $db;
 	protected $basePath;
+
+	/**
+	 * @param \FluentPDO $db
+	 */
 	public function __construct(\FluentPDO $db)
 	{
 		$this->db = $db;
@@ -50,6 +54,11 @@ class user {
 	}
 
 
+	/**
+	 * @param $username
+	 *
+	 * @return mixed
+	 */
 	public function findByUsername($username)
 	{
 		$query = $this->db->from('users')->where('username',$username);
@@ -58,6 +67,11 @@ class user {
 
 	}
 
+	/**
+	 * @param $email
+	 *
+	 * @return mixed
+	 */
 	public function findByEmail($email)
 	{
 		$query = $this->db->from('users')->where('email',$email);

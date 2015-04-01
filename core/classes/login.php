@@ -26,6 +26,9 @@ class login {
 		$this->user_obj = $user_obj;
 	}
 
+	/**
+	 * @param array $data
+	 */
 	public function register(array $data)
 	{
 		if($data['username']==''){
@@ -47,34 +50,32 @@ class login {
 
 		if(isset($redirect)){
 			header("location:".$this->basePath."register.php");
-			exit();
 		}
+		else {
 
-		unset($data['confirm_password']);
-		$emailCheck = $this->checkEmail($data['email']);
-		$usernameCheck = $this->checkUsername($data['username']);
+			unset($data['confirm_password']);
+			$emailCheck = $this->checkEmail($data['email']);
+			$usernameCheck = $this->checkUsername($data['username']);
 
-		if($emailCheck){
-			$_SESSION['flash']['email'] = 'Email in gebruik';
-			header("location:".$this->basePath."register.php");
+			if ($emailCheck) {
+				$_SESSION['flash']['email'] = 'Email in gebruik';
+				header("location:" . $this->basePath . "register.php");
+			}
+			if ($usernameCheck) {
+				$_SESSION['flash']['username'] = 'Username in gebruik';
+				header("location:" . $this->basePath . "register.php");
+			}
+
+
+			if ($this->_user->create($data)) {
+				$_SESSION['flash']['notice'] = "An account has been created";
+				header('location:' . $this->basePath);
+			} else {
+				$_SESSION['flash']['warning'] = "Error 001: Something has gone wrong, please inform an admin";
+				header('location:' . $this->basePath . 'register.php');
+			}
+
 		}
-		if($usernameCheck){
-			$_SESSION['flash']['username'] = 'Username in gebruik';
-			header("location:".$this->basePath."register.php");
-		}
-
-
-		if($this->_user->create($data))
-		{
-			$_SESSION['flash']['notice'] = "An account has been created";
-			header('location:'.$this->basePath);
-		}
-		else{
-			$_SESSION['flash']['warning'] = "Error 001: Something has gone wrong, please inform an admin";
-			header('location:'.$this->basePath.'register.php');
-		}
-
-
 	}
 
 	/**
@@ -85,7 +86,7 @@ class login {
 	public function checkEmail($email)
 	{
 		$data = $this->user_obj->findByEmail($email);
-		if($data==false)
+		if($data===false)
 		{
 			$return = false;
 		}
@@ -104,7 +105,7 @@ class login {
 	public function checkUsername($username)
 	{
 		$data = $this->user_obj->findByUsername($username);
-		if($data==false)
+		if($data===false)
 		{
 			$return = false;
 		}
@@ -115,11 +116,15 @@ class login {
 	}
 
 
+	/**
+	 * @param $username
+	 * @param $password
+	 */
 	public function login($username,$password)
 	{
 		$user = $this->user_obj->findByUsername($username);
 
-		if($user==false){
+		if($user===false){
 			$_SESSION['flash']['error'] = "the username or password is incorrect";
 			header('location: '.$this->basePath."login.php");
 		}
@@ -136,6 +141,10 @@ class login {
 		}
 
 	}
+
+	/**
+	 * @return bool
+	 */
 	public function loggedIn(){
 		return(isset($_SESSION["user"])) ? true:false;
 	}

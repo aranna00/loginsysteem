@@ -7,7 +7,6 @@
  */
 
 
-//	error_reporting(E_ALL^E_NOTICE);
 	use core\classes\login;
 	use core\classes\user;
 
@@ -26,9 +25,9 @@
 	}
 	require('lib/FluentPDO/FluentPDO.php');
 	require('connect.php');
-	require('classes/user.php');
-	require('classes/general.php');
-	require('classes/login.php');
+	require('classes/User.php');
+	require('classes/General.php');
+	require('classes/Login.php');
 
 
 	$user_obj = new user($db, $basePath);

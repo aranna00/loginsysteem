@@ -10,6 +10,10 @@ namespace core\classes;
 
 
 class general {
+	/**
+	 * @param \FluentPDO $db
+	 * @param string     $basePath
+	 */
 	public function __construct(\FluentPDO $db, $basePath = "http://localhost/nieuws/")
 	{
 		$this->db = $db;
