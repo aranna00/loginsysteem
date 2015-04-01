@@ -28,7 +28,7 @@
 				<?php endif; ?>
 				<?php if(!$login_obj->loggedIn()): ?>
 					<li><a href="<?= $basePath.'register.php' ?>">Register</a> </li>
-					<li><a href="<?= $basePath.'login_obj.php'?>">Login</a> </li>
+					<li><a href="<?= $basePath.'login.php'?>">Login</a> </li>
 				<?php endif; ?>
 			</ul>
 		</div><!--/.nav-collapse -->
