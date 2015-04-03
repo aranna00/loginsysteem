@@ -3,11 +3,7 @@
  */
 
 $(document).ready(function(){
-    $('#vragen').dataTable({
-        paging:true
-    });
-    $('#navbar').collapse({
-        toggle: false
-    });
+
 });
+
 
